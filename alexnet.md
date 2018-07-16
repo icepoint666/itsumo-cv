@@ -22,7 +22,7 @@ alexnet总共包括8层，其中前5层convolutional，后面3层是full-connect
 
 这些像素层经过relu1单元的处理，生成激活像素层，尺寸仍为2组55\*55\*48的像素层数据。
 
-经过response-normalized层（其实是Local Response Normalized，后面会讲下这里）和pooled之后，pool这一层好像caffe里面的alexnet和paper里面不太一样，alexnet里面采样了两个GPU，所以从图上面看第一层卷积层厚度有两部分，池化pool_size=(3,3),滑动步长为2个pixels，得到96个2727个feature。
+经过response-normalized层（其实是Local Response Normalized，后面会讲下这里）和pooled之后，pool这一层好像caffe里面的alexnet和paper里面不太一样，alexnet里面采样了两个GPU，所以从图上面看第一层卷积层厚度有两部分，池化pool_size=(3,3),滑动步长为2个pixels，得到96个27\*27个feature。
 
 第二层卷积层使用256个（同样，分布在两个GPU上，每个128kernels（5\*5\*48）），做pad_size(2,2)的处理，以1个pixel为单位移动（感谢网友指出），能够产生27\*27个卷积后的矩阵框，做LRN处理，然后pooled，池化以3*3矩形框，2个pixel为步长，得到256个13\*13个features。
 
