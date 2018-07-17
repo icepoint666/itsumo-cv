@@ -343,3 +343,102 @@ relu = tf.nn.relu(tf.nn.bias_add(conv, conv1_biases))
 if __name__ == '__main__':
   tf.app.run()
 ```
+
+运行结果：
+```
+$ python -m tensorflow.models.image.mnist.convolutional
+Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.
+Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.
+Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.
+Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.
+Extracting data/train-images-idx3-ubyte.gz
+Extracting data/train-labels-idx1-ubyte.gz
+Extracting data/t10k-images-idx3-ubyte.gz
+Extracting data/t10k-labels-idx1-ubyte.gz
+Initialized!
+Step 0 (epoch 0.00), 2.6 ms
+Minibatch loss: 12.054, learning rate: 0.010000
+Minibatch error: 90.6%
+Validation error: 84.6%
+Step 100 (epoch 0.12), 169.5 ms
+Minibatch loss: 3.286, learning rate: 0.010000
+Minibatch error: 6.2%
+Validation error: 7.1%
+Step 200 (epoch 0.23), 152.8 ms
+Minibatch loss: 3.479, learning rate: 0.010000
+Minibatch error: 10.9%
+Validation error: 3.8%
+Step 300 (epoch 0.35), 153.9 ms
+Minibatch loss: 3.213, learning rate: 0.010000
+Minibatch error: 6.2%
+Validation error: 3.1%
+Step 400 (epoch 0.47), 155.2 ms
+Minibatch loss: 3.208, learning rate: 0.010000
+Minibatch error: 7.8%
+Validation error: 2.8%
+Step 500 (epoch 0.58), 152.8 ms
+Minibatch loss: 3.291, learning rate: 0.010000
+Minibatch error: 9.4%
+Validation error: 2.6%
+Step 600 (epoch 0.70), 152.2 ms
+Minibatch loss: 3.202, learning rate: 0.010000
+Minibatch error: 6.2%
+Validation error: 2.6%
+Step 700 (epoch 0.81), 156.4 ms
+Minibatch loss: 2.998, learning rate: 0.010000
+Minibatch error: 1.6%
+Validation error: 2.5%
+Step 800 (epoch 0.93), 163.2 ms
+Minibatch loss: 3.078, learning rate: 0.010000
+Minibatch error: 7.8%
+Validation error: 2.0%
+Step 900 (epoch 1.05), 152.9 ms
+Minibatch loss: 2.927, learning rate: 0.009500
+Minibatch error: 3.1%
+Validation error: 1.6%
+Step 1000 (epoch 1.16), 154.7 ms
+Minibatch loss: 2.852, learning rate: 0.009500
+Minibatch error: 0.0%
+Validation error: 1.7%
+Step 1100 (epoch 1.28), 153.5 ms
+Minibatch loss: 2.823, learning rate: 0.009500
+Minibatch error: 0.0%
+Validation error: 1.6%
+Step 1200 (epoch 1.40), 150.9 ms
+Minibatch loss: 2.913, learning rate: 0.009500
+Minibatch error: 7.8%
+Validation error: 1.4%
+Step 1300 (epoch 1.51), 155.3 ms
+Minibatch loss: 2.768, learning rate: 0.009500
+Minibatch error: 0.0%
+Validation error: 1.7%
+Step 1400 (epoch 1.63), 153.1 ms
+Minibatch loss: 2.774, learning rate: 0.009500
+Minibatch error: 3.1%
+Validation error: 1.5%
+Step 1500 (epoch 1.75), 151.7 ms
+Minibatch loss: 2.880, learning rate: 0.009500
+Minibatch error: 6.2%
+Validation error: 1.4%
+Step 1600 (epoch 1.86), 154.3 ms
+Minibatch loss: 2.696, learning rate: 0.009500
+Minibatch error: 1.6%
+Validation error: 1.4%
+Step 1700 (epoch 1.98), 154.1 ms
+Minibatch loss: 2.650, learning rate: 0.009500
+Minibatch error: 0.0%
+Validation error: 1.3%
+Step 1800 (epoch 2.09), 150.3 ms
+Minibatch loss: 2.666, learning rate: 0.009025
+Minibatch error: 1.6%
+Validation error: 1.3%
+Step 1900 (epoch 2.21), 165.0 ms
+Minibatch loss: 2.659, learning rate: 0.009025
+Minibatch error: 1.6%
+Validation error: 1.2%
+Step 2000 (epoch 2.33), 171.5 ms
+Minibatch loss: 2.637, learning rate: 0.009025
+Minibatch error: 3.1%
+Validation error: 1.3%
+
+```
