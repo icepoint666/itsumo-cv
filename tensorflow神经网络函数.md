@@ -54,45 +54,8 @@ X落在（μ-3σ，μ+3σ）以外的概率小于千分之三，在实际问题�
     shape: 一维的张量，也是输出的张量。
     mean: 正态分布的均值。
     stddev: 正态分布的标准差。
-    dtype: 输出的类型。
-    seed: 一个整数，当设置之后，每次生成的随机数都一样。
-    name: 操作的名字。
+    dtype:p.array([[0,0],[pad_size,pad_size],[pad_size,pad_size],[0,0]])
 
-代码
-```python
-a = tf.Variable(tf.random_normal([2,2],seed=1))
-b = tf.Variable(tf.truncated_normal([2,2],seed=2))
-init = tf.global_variables_initializer()
-with tf.Session() as sess:
-    sess.run(init)
-    print(sess.run(a))
-    print(sess.run(b))
-```
-```
-输出：
-[[-0.81131822  1.48459876]
- [ 0.06532937 -2.44270396]]
-[[-0.85811085 -0.19662298]
- [ 0.13895047 -1.22127688]]
-```
-### tf.pad函数
-***tf.pad(tensor, paddings, mode="CONSTANT", name=None)***
-tf.pad的作用是填充
-
-参数
-    tensor是要填充的张量
-    padings 也是一个张量，代表每一维填充多少行/列，但是有一个要求它的rank一定要和tensor的rank是一样的
-    mode 可以取三个值，分别是"CONSTANT" ,"REFLECT","SYMMETRIC"
-    mode="CONSTANT" 是填充0
-    mode="REFLECT"是映射填充，上下（1维）填充顺序和paddings是相反的，左右（零维）顺序补齐
-    mode="SYMMETRIC"是对称填充，上下（1维）填充顺序是和paddings相同的，左右（零维）对称补齐
-
-本例使用的tensor都是rank=2的，注意paddings的rank也要等于2，否则报错
-
-示例：
-```python
-pad_size = size//2
-pad_mat = np.array([[0,0],[pad_size,pad_size],[pad_size,pad_size],[0,0]])
 inputs_pad = tf.pad(inputs,pad_mat)
 ```
 其中pad_mat每行表示每一维的两个方向上的padding量
@@ -162,9 +125,55 @@ array([[3, 2, 2, 3, 4, 4, 3],
 ```
 可以看到，上下左右的值进行了对称填充，上下值是按照t相同顺序填充的，左右值只是进行对称补齐
 
+### tf.nn.bias_add
+***tf.nn,bias_add(value, bias, name = None)***
+这个函数的作用是将bias加到value上
+
+这个操作可以看成tf.add的特例，其中bias是一维的。
+
+输入参数：
+```
+value: 输入一个Tensor， 其类型只能是float, double, int64, int32, int16, int8, uint8, complex64
+bias: 一个一维的Tensor数据维度必须和Tensor的最后一维相同，数据类型必须和value的相同
+name： (可选)为这个操作取一个名字
+```
+输出：
+```
+一个Tensor，数据类型必须和value相同。
+```
+示例：
+```python
+import tensorflow as tf
+ 
+a=tf.constant([[1,1],[2,2],[3,3]],dtype=tf.float32)
+b=tf.constant([1,-1],dtype=tf.float32)
+c=tf.constant([1],dtype=tf.float32)
+ 
+with tf.Session() as sess:
+    print('bias_add:')
+    print(sess.run(tf.nn.bias_add(a, b)))
+    #执行下面语句错误
+    #print(sess.run(tf.nn.bias_add(a, c)))
+ 
+    print('add:')
+    print(sess.run(tf.add(a, c)))
+```
+输出结果：
+```
+bias_add:
+[[ 2. 0.]
+[ 3. 1.]
+[ 4. 2.]]
+add:
+[[ 2. 2.]
+[ 3. 3.]
+[ 4. 4.]]
+```
 
 https://blog.csdn.net/zj360202/article/details/70243127
 
 https://blog.csdn.net/u013713117/article/details/65446361
 
 https://blog.csdn.net/zhang_bei_qing/article/details/75090203
+
+https://blog.csdn.net/weixin_38698649/article/details/80100737
