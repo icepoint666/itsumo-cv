@@ -24,7 +24,7 @@
       print(sess.run(y, feed_dict={x: rand_array}))  # Will succeed.
 ```
 返回：Tensor 类型
-### tf.truncated_normal
+### tf.truncated_normal函数
 ***tf.truncated_normal(shape, mean=0.0, stddev=1.0, dtype=tf.float32, seed=None, name=None)***
 
 从截断的正态分布中输出随机值。
@@ -45,7 +45,7 @@ X落在（μ-3σ，μ+3σ）以外的概率小于千分之三，在实际问题�
     seed: 一个整数，当设置之后，每次生成的随机数都一样。
     name: 操作的名字。
     
-### tf.random_normal
+### tf.random_normal函数
 ***tf.random_normal(shape, mean=0.0, stddev=1.0, dtype=tf.float32, seed=None, name=None)***
 
 从正态分布中输出随机值。
