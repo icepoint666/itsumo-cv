@@ -89,6 +89,13 @@ tf.pad的作用是填充
 
 本例使用的tensor都是rank=2的，注意paddings的rank也要等于2，否则报错
 
+示例：
+```python
+pad_size = size//2
+pad_mat = np.array([[0,0],[pad_size,pad_size],[pad_size,pad_size],[0,0]])
+inputs_pad = tf.pad(inputs,pad_mat)
+```
+其中pad_mat每行表示每一维的两个方向上的padding量
 
 示例1：
 ```python
