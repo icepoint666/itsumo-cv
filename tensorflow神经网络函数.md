@@ -169,6 +169,23 @@ add:
 [ 3. 3.]
 [ 4. 4.]]
 ```
+### tf.nn.relu函数
+
+***tf.nn.relu(features, name=None)  = max(0,features)***
+
+```
+参数：
+    features：A `Tensor`. 必须类型: `float32`, `float64`, `int32`, `int64`, `uint8`, `int16`, `int8`, `uint16`, `half`.
+    name：名称
+
+返回：Tensor
+```
+
+一般features会是(卷积核,图像)的卷积后加上bias
+```python
+tf.nn.relu(tf.nn.conv2d(x_image, w_conv1, strides=[1, 1, 1, 1], padding='SAME') + b_conv1)
+```
+
 
 https://blog.csdn.net/zj360202/article/details/70243127
 
@@ -177,3 +194,5 @@ https://blog.csdn.net/u013713117/article/details/65446361
 https://blog.csdn.net/zhang_bei_qing/article/details/75090203
 
 https://blog.csdn.net/weixin_38698649/article/details/80100737
+
+https://blog.csdn.net/zj360202/article/details/70256545
