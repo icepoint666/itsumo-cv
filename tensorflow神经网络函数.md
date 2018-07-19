@@ -125,7 +125,7 @@ array([[3, 2, 2, 3, 4, 4, 3],
 ```
 可以看到，上下左右的值进行了对称填充，上下值是按照t相同顺序填充的，左右值只是进行对称补齐
 
-### tf.nn.bias_add
+### tf.nn.bias_add函数
 ***tf.nn,bias_add(value, bias, name = None)***
 这个函数的作用是将bias加到value上
 
