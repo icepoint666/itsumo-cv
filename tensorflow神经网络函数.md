@@ -75,7 +75,89 @@ with tf.Session() as sess:
 [[-0.85811085 -0.19662298]
  [ 0.13895047 -1.22127688]]
 ```
+### tf.pad函数
+***tf.pad(tensor, paddings, mode="CONSTANT", name=None)***
+tf.pad的作用是填充
+
+参数
+    tensor是要填充的张量
+    padings 也是一个张量，代表每一维填充多少行/列，但是有一个要求它的rank一定要和tensor的rank是一样的
+    mode 可以取三个值，分别是"CONSTANT" ,"REFLECT","SYMMETRIC"
+    mode="CONSTANT" 是填充0
+    mode="REFLECT"是映射填充，上下（1维）填充顺序和paddings是相反的，左右（零维）顺序补齐
+    mode="SYMMETRIC"是对称填充，上下（1维）填充顺序是和paddings相同的，左右（零维）对称补齐
+
+本例使用的tensor都是rank=2的，注意paddings的rank也要等于2，否则报错
+
+
+示例1：
+```python
+t=[[2,3,4],[5,6,7]]
+paddings=[[1,1],[2,2]]
+mode="CONSTANT"
+sess.run(tf.pad(t, paddings, "CONSTANT"))
+```
+输出结果：
+```
+array([[0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 2, 3, 4, 0, 0],
+          [0, 0, 5, 6, 7, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0]], dtype=int32)
+```
+可以看到，上，下，左，右分别填充了1,1,2,2行刚好和paddings=[[1,1],[2,2]]相等，零填充
+
+示例2：
+```python
+t=[[2,3,4],[5,6,7]]
+paddings=[[1,2],[2,3]]
+mode="CONSTANT"
+sess.run(tf.pad(t,paddings,"CONSTANT"))
+```
+输出结果：
+```
+array([[0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 2, 3, 4, 0, 0, 0],
+          [0, 0, 5, 6, 7, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0]], dtype=int32)
+```
+可以看到，上，下，左，右分别填充啦1,2,2,3行刚好和paddings=[[1,2],[2,3]]相等，零填充
+
+示例3:
+```python
+t=[[2,3,4],[5,6,7]]
+paddings=[[1,1],[2,2]]
+mode='REFLECT'
+sess.run(tf.pad(t,paddings,"REFLECT"))
+```
+输出结果：
+```
+array([[7, 6, 5, 6, 7, 6, 5],
+           [4, 3, 2, 3, 4, 3, 2],
+           [7, 6, 5, 6, 7, 6, 5],
+           [4, 3, 2, 3, 4, 3, 2]], dtype=int32)
+```
+可以看到，上下左右的值进行了映射填充，上下值填充的顺序和t是相反的，左右值只是进行顺序补齐
+
+示例4：
+```python
+t=[[2,3,4],[5,6,7]]
+paddings=[[1,1],[2,2]]
+mode='SYMMETRIC'
+sess.run(tf.pad(t,paddings,"SYMMETRIC"))
+```
+输出结果：
+```
+array([[3, 2, 2, 3, 4, 4, 3],
+          [3, 2, 2, 3, 4, 4, 3],
+          [6, 5, 5, 6, 7, 7, 6],
+          [6, 5, 5, 6, 7, 7, 6]], dtype=int32)
+```
+可以看到，上下左右的值进行了对称填充，上下值是按照t相同顺序填充的，左右值只是进行对称补齐
+
 
 https://blog.csdn.net/zj360202/article/details/70243127
 
 https://blog.csdn.net/u013713117/article/details/65446361
+
+https://blog.csdn.net/zhang_bei_qing/article/details/75090203
