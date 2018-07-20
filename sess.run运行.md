@@ -32,6 +32,7 @@ self.images = tf.placeholder(tf.float32, [self.batch_size] + [self.output_size, 
 
 self.z = tf.placeholder(tf.float32, [None, self.z_dim],name='z') 
 ```
-
+![](pics/sess_run_1.png) 
+![](pics/sess_run_2.png) 
 
 https://blog.csdn.net/cc1949/article/details/78364615?locationNum=4&fps=1
