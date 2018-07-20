@@ -113,3 +113,19 @@ load_model()
 
 这里说明一点，如何知道tensor的名字，最好是定义tensor的时候就指定名字，如上面代码中的name='w'，如果你没有定义name，tensorflow也会设置name，只不过这个name就是根据你的tensor或者操作的性质，像上面的w，这是“Variable:0”，loss则是“Mean:0”。所以最好还是自己定义好name。
 
+## 4.知识点
+
+1、.meta文件：一个协议缓冲，保存tensorflow中完整的graph、variables、operation、collection。
+
+2、checkpoint文件：一个二进制文件，包含了weights, biases, gradients和其他variables的值。但是0.11版本后的都修改了，用.data和.index保存值，用checkpoint记录最新的记录。
+
+3、在进行保存时，因为meta中保存的模型的graph，这个是一样的，只需保存一次就可以，所以可以设置saver.save(sess, 'my-model', write_meta_graph=False)即可。
+
+4、如果想设置每多长时间保存一次，可以设置saver = tf.train.Saver(keep_checkpoint_every_n_hours=2)，这个是每2个小时保存一次。
+
+5、如果不想保存所有变量，可以在创建saver实例时，指定保存的变量，可以以list或者dict的类型保存。如：
+```python
+w1 = tf.Variable(tf.random_normal(shape=[2]), name='w1')
+w2 = tf.Variable(tf.random_normal(shape=[5]), name='w2')
+saver = tf.train.Saver([w1,w2])
+```
