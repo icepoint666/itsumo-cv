@@ -32,7 +32,39 @@ self.images = tf.placeholder(tf.float32, [self.batch_size] + [self.output_size, 
 
 self.z = tf.placeholder(tf.float32, [None, self.z_dim],name='z') 
 ```
+## 介绍tensorflow
+
+张量(Tensor)
+
+名字就是TensorFlow，直观来看，就是张量的流动。张量(tensor)，即任意维度的数据，一维、二维、三维、四维等数据统称为张量。而张量的流动则是指保持计算节点不变，让数据进行流动。
+
+这样的设计是针对连接式的机器学习算法，比如逻辑斯底回归，神经网络等。连接式的机器学习算法可以把算法表达成一张图，张量在图中从前到后走一遍就完成了前向运算；而残差从后往前走一遍，就完成了后向传播。
+
+算子(operation)
+
+在TF的实现中，机器学习算法被表达成图，图中的节点是算子(operation)，节点会有0到多个输出，下图是TF实现的一些算子。
+
+每个算子都会有属性，所有的属性都在建立图的时候被确定下来，比如，最常用的属性是为了支持多态，比如加法算子既能支持float32，又能支持int32计算。
+
+边(edge)
+
+TF的图中的边分为两种：
+
+正常边，正常边上可以流动数据，即正常边就是tensor
+
+特殊边，又称作控制依赖，(control dependencies)
+
+    没有数据从特殊边上流动，但是特殊边却可以控制节点之间的依赖关系，在特殊边的起始节点完成运算之前，特殊边的结束节点不会被执行。
+    也不仅仅非得有依赖关系才可以用特殊边，还可以有其他用法，比如为了控制内存的时候，可以让两个实际上并没有前后依赖关系的运算分开执行。
+    特殊边可以在client端被直接使用
+
+会话(Session)
+
+客户端使用会话来和TF系统交互，一般的模式是，建立会话，此时会生成一张空图；在会话中添加节点和边，形成一张图，然后执行。
+
+下图有一个TF的会话样例和所对应的图示。
 ![](pics/sess_run_1.png) 
 ![](pics/sess_run_2.png) 
 
 https://blog.csdn.net/cc1949/article/details/78364615?locationNum=4&fps=1
+https://blog.csdn.net/nongfu_spring/article/details/54347996
