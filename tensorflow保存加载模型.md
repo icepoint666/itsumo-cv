@@ -129,3 +129,4 @@ w1 = tf.Variable(tf.random_normal(shape=[2]), name='w1')
 w2 = tf.Variable(tf.random_normal(shape=[5]), name='w2')
 saver = tf.train.Saver([w1,w2])
 ```
+https://blog.csdn.net/liuxiao214/article/details/79048136
