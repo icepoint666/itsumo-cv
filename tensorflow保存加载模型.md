@@ -1,6 +1,7 @@
 # tensorflow保存加载模型
 
 ## 1、保存模型
+实质：保存的是sess（tf.Session())会话
 ```python
 # 首先定义saver类
 saver = tf.train.Saver(max_to_keep=4)
