@@ -1,6 +1,6 @@
 # Alexnet
 ## Alexnet结构
-![ ](./pics/alexnet1.jpg  "alexnet_structure")
+![ ](../pics/alexnet1.jpg  "alexnet_structure")
 
 ## Alexnet简介
 alexnet总共包括8层，其中前5层convolutional，后面3层是full-connected，文章里面说的是减少任何一个卷积结果会变得很差，下面我来具体讲讲每一层的构成：
