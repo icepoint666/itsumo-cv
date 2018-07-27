@@ -63,8 +63,8 @@ TF的图中的边分为两种：
 客户端使用会话来和TF系统交互，一般的模式是，建立会话，此时会生成一张空图；在会话中添加节点和边，形成一张图，然后执行。
 
 下图有一个TF的会话样例和所对应的图示。
-![](pics/sess_run_1.png) 
-![](pics/sess_run_2.png) 
+![](../__pics/sess_run_1.png) 
+![](../__pics/sess_run_2.png) 
 
 https://blog.csdn.net/cc1949/article/details/78364615?locationNum=4&fps=1
 
