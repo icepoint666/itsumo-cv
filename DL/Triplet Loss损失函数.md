@@ -5,6 +5,7 @@
 > 通过优化锚示例与正示例的距离小于锚示例与负示例的距离，实现样本的相似性计算。
 
 Triplet Loss的核心是锚示例、正示例、负示例共享模型，通过模型，将锚示例与正示例聚类，远离负示例。
+![ ](../__pics/triplet_1.png)
 
 - 输入：三个输入，即锚示例、正示例、负示例，不同示例的结构相同；
 - 模型：一个共享模型，支持替换为任意网络结构；
@@ -12,9 +13,11 @@ Triplet Loss的核心是锚示例、正示例、负示例共享模型，通过�
 
 ## 计算公式
 Triplet Loss损失函数的计算公式如下：
+![ ](../__pics/triplet_2.png)
 
 ## 思想精髓
 Triplet Loss的思想精髓如下图所示，通过选择三张图片构成一个三元组，即Anchor、Negative、Positive，通过Triplet Loss的学习后使得Positive元和Anchor元之间的距离最小，而和Negative之间距离最大。其中Anchor为训练数据集中随机选取的一个样本，Positive为和Anchor属于同一类的样本，而Negative则为和Anchor不同类的样本。
+![ ](../__pics/triplet_3.png)
 
 ## 适用问题
 一般Triplet Loss使用场景是在ReID问题
@@ -25,4 +28,10 @@ ReID问题使用Triplet Loss原因：
 
 （2）Person ReID的问题图片数据集很小，通过构造三元组可以生成远多于图片数量的triplets，因此训练的时候可以加入更多的限制，可以有效地缓解过拟合。
 
+![ ](../__pics/Triplet_formula.png)
+
 其中Fw是将网络等效成一个参数为W的函数映射，O是训练及图片，O^1和O^2是同ID的图片，O^1和O^3是不同ID的图片。C的作用防止简单的triplets造成loss太小，给一个下界。
+
+https://www.jianshu.com/p/2cbd823257a6
+
+https://blog.csdn.net/qq_28659831/article/details/80805291
