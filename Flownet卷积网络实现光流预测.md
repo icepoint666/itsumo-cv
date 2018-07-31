@@ -33,7 +33,7 @@
 
 但是pooling会使图片的分辨率降低，为了提供一个密集的光流预测，他们增加了一个扩大层，能智能的把光流恢复到高像素。 
 
-他们用back progation 对这整个网络进行训练。
+他们用back propagation 对这整个网络进行训练。
 
 ## 收缩部分网络结构
 
@@ -55,7 +55,56 @@
 
 这一网络没有全连接层，所以这个网络不能够把任意大小的图片作为输入，
 
-卷积filter随着卷积的深入递减，第一个7*7，接下来两个5*5，之后是3*3，featuremaps因为stride是2每层递增两倍。
+卷积filter随着卷积的深入递减，第一个7\*7，接下来两个5\*5，之后是3\*3，featuremaps因为stride是2每层递增两倍。
+
+### FlowNetCorr结构
+![ ](../__pics/flownet_4.png)
+
+另一个方式 网络先独立的提取俩图片的特征，再在高层次中把这两特征混合在一起。 
+这与正常的匹配的方法一致，先提取两个图片的特征，再对这些特征进行匹配，这个网络叫做flownetcorr。
+
+展开看它的关联层
+
+![ ](../__pics/flownet_5.png)
+
+公式如下：
+
+![ ](../__pics/flownet_6.png)
+
+这一公式相当与神经网络的一步卷积层，但普通的卷积是与filter进行卷积，这个是两个数据进行卷积，所以它没有可以训练的权重。
+
+![ ](../__pics/flownet_7.png)
+
+![ ](../__pics/flownet_8.png)
+
+这一公式有ck2的运算， 为了计算速度的原因，我们限制最大的比较位移值。 
+
+![ ](../__pics/flownet_9.png)
+
+![ ](../__pics/flownet_10.png)
+
+![ ](../__pics/flownet_11.png)
+
+## 放大网络结构
+
+![ ](../__pics/flownet_12.png)
+
+扩大部分主要是由上卷基层组成，上卷基层由unpooling（扩大featuremap，与pooling的步骤相反）和一个卷积组成，我们对featuremaps使用upconvolution，并且把它和收缩部分对应的feature map（灰色箭头）以及一个上采样的的光流预测（红色）联系起来。每一步提升两倍的分辨率，重复四次，预测出来的光流的分辨率依然比输入图片的分辨率要小四倍。
+
+这一部的意义就是： 
+
+This way we preserve both the high-level information passed from coarser feature maps and ﬁne local information provided in lower layer feature maps. 
+
+文章中说在这个分辨率时再接着进行双线性上采样的refinement已经没有显著的提高。 
+
+所以采用优化方式：the variational approach。 
+
+记为 +v，这一层需要更高的计算量，但是增加了流畅性，和subpixel-accurate flow filed。
+
+## Flownetsimple与Flownetcorr对比
+仅仅看数据会感觉flownetcorr虽然加了关联层，但与s对比并没有太大的改善，因为flownetsimple的正确率也已经很不错了，flownetcorr并没有太大的优势。 
+但的是flownetcorr在flyingchair和sintel clean数据集的表现要好于flownetsimple，注意到sintel clean是没有运动blur和fog特效等的，和flyingchair数据集比较类似，这意味着flownetcorr网络能更好的学习训练数据集，更加过拟合over-fitting（文章原话）。 
+所以如果使用更好的训练数据集，flownetcorr网络会更有优势。
 
 https://blog.csdn.net/hysteric314/article/details/50529804
 
