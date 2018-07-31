@@ -28,3 +28,5 @@
 数目为 10^3 × 10^3 × 10 × 10 = 10^8个参数
 
 ### 4.CNN 的卷积并没有执行“翻转”操作，而是与输入图像做滑动窗口“相关”计算；
+
+https://blog.csdn.net/lanchunhui/article/details/60886027
