@@ -9,7 +9,9 @@
 
 所以像下图，减少intra-class 变动幅度，扩大inter-class 变动幅度可以减少训练模型的泛化错误
 
-![](pics/quad.jpg)
+![](pics/quad1.png)
+
+上图显示，在我们新的 quadruplet loss 作用下，对于训练数据的每个类别，我们减小了同类别方差，增加异类方差。
 
 Our designed loss simultaneously considers the following two aspects in one quadruplet:
 
@@ -24,5 +26,15 @@ Our designed loss simultaneously considers the following two aspects in one quad
 关于这两个方面的平衡用两个常量margin控制。
 
 第二个方面对训练集测试分数没有太大影响，但是对测试集比较有好处，增强模型的泛化能力。
+
+## 网络结构
+
+![](pics/quad2.png)
+
+上图红色部分是重点，加入了第二个类别的负样本。 
+这里的 positive pair negative pair negative pair2 三个损失函数计算值中 positive pair 是最小的。这么做减小了同类别方差 。 
+
+For the pairs from the same probe, the quadruplet loss produces a strong push between positive and negative pairs, while for those with different probes, our loss provides a relatively weaker push to reduce the inter-class variations.
+
 
 https://blog.csdn.net/zhangjunhit/article/details/70239948
