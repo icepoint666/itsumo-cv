@@ -56,5 +56,48 @@ n: nagative
 
 为了避免这个问题，在选择negative的时候，使其满足上式(3)：左边：Positive pair的欧式距离右边：negative pair的欧式距离。
 
+![](pics/facenet3.png)
+
+把这一个约束叫作semi-hard
+
+## 网络结构
+
+文章中的CNN采用了两种结构（都是直接采用别人的方法）
+
+第一个网络结构是利用特征可视化的那篇文章
+
+![](pics/facenet4.png)
+
+![](pics/facenet4.5.png)
+
+第二个网络采用的网络结构是GoLeNet，层数更多，参数更少
+
+![](pics/facenet5.png)
+
+![](pics/facenet5.5.png)
+
+### 论文的实验：
+
+1. 不同的网络配置下的识别率。
+
+![](pics/facenet6.png)
+
+2. 不同的训练图像数据集的大小。
+
+![](pics/facenet7.png)
+
+3. 不同的特征维度下的识别率：
+
+![](pics/facenet8.png)
+
+4. 不同的图像质量下的识别率：
+
+![](pics/facenet9.png)
+
+文章的贡献
+
+1，新的loss函数
+
+2，特征维度可以很稀疏128维
 
 https://blog.csdn.net/qq_30478885/article/details/78976049
