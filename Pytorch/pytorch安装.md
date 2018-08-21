@@ -7,6 +7,6 @@ Linux Python3.5 No-CUDA
 
 或者直接
 ```shell
-$ pip3 install torchvision
+$ sudo pip3 install torchvision
 ```
 ![](../__pics/torchvision.png)
