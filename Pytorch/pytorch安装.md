@@ -4,3 +4,8 @@
 
 Linux Python3.5 No-CUDA
 ![](../__pics/pytorch安装.png)
+
+或者直接
+```shell
+$ pip3 install torchvision
+```
