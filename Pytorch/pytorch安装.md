@@ -9,3 +9,4 @@ Linux Python3.5 No-CUDA
 ```shell
 $ pip3 install torchvision
 ```
+![](../__pics/torchvision.png)
