@@ -107,4 +107,28 @@ Tensorflow(static graph)中事先构建图，之后每次跑都不用再构建�
 Tensorflow实现就需要特殊的控制流：
 
 ![](../__pics/pytorch17.png)
+
+我们需要在控制流中设置一个显式的节点，而且Tensorflow这样设计需要熟悉函数式编程
+
+使用tf.foldl来实现特定的循环结构
+
+##### 关键：计算图相当于用Tensorflow自己的编程语言，任何控制流操作，任何数据结构都需要合并在计算图中，所以并不能用Python的范式来完成工作
+
+##### 所以倾向于使用Pytorch的结构会更好一些，可以使用任何Python中的编程结构，而且也可以工作的很好
+
+##### Tensorflow Fold
+支持 Dynamic Graph in Tensorflow
+
+常用Dynamic Graph Applications
+- Recurrent networks  依赖时间序列信息的循环神经网络
+- Recursive networks  常用于自然语言处理的递归神经网路（因为需要parse语法树）
+- Modular Networks 回答问题的网络
+这些都是Tensorflow很难去实现的，需要Pytorch做会好一些
+
+现存框架：
+
+![](../__pics/pytorch18.png)
+
+![](../__pics/pytorch19.png)
+
 From Stanford.cs231n
