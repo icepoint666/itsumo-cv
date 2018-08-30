@@ -1,7 +1,7 @@
 # torchvision.transform
 > PyTorch框架中有一个非常重要且好用的包：torchvision，该包主要由3个子包组成，分别是：torchvision.datasets、torchvision.models、torchvision.transforms。
 
-这篇博客介绍torchvision.transformas。torchvision.transforms这个包中包含resize、crop等常见的data augmentation操作，基本上PyTorch中的data augmentation操作都可以通过该接口实现。该包主要包含两个脚本：transformas.py和functional.py，前者定义了各种data augmentation的类，在每个类中通过调用functional.py中对应的函数完成data augmentation操作。
+这篇博客介绍torchvision.transforms。torchvision.transforms这个包中包含resize、crop等常见的data augmentation操作，基本上PyTorch中的data augmentation操作都可以通过该接口实现。该包主要包含两个脚本：transformas.py和functional.py，前者定义了各种data augmentation的类，在每个类中通过调用functional.py中对应的函数完成data augmentation操作。
 
 ```python
 import torchvision
