@@ -736,3 +736,5 @@ class RandomGrayscale(object):
     def __repr__(self):
         return self.__class__.__name__ + '()'
 ```
+
+https://blog.csdn.net/yt4766269/article/details/77923422
