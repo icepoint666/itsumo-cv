@@ -208,7 +208,7 @@ class Resize(object):
         return self.__class__.__name__ + '(size={0})'.format(self.size)
 ```
 CenterCrop是以输入图的中心点为中心点做指定size的crop操作，一般数据增强不会采用这个，因为当size固定的时候，在相同输入图像的情况下，N次CenterCrop的结果都是一样的。注释里面说明了size为int和序列时候尺寸的定义。
-``python
+```python
 class CenterCrop(object):
     """Crops the given PIL Image at the center.
 
@@ -237,7 +237,9 @@ class CenterCrop(object):
     def __repr__(self):
         return self.__class__.__name__ + '(size={0})'.format(self.size)
 ```
+
 相比前面的CenterCrop，这个RandomCrop更常用，差别就在于crop时的中心点坐标是随机的，并不是输入图像的中心点坐标，因此基本上每次crop生成的图像都是有差异的。就是通过 i = random.randint(0, h - th)和 j = random.randint(0, w - tw)两行生成一个随机中心点的横纵坐标。注意到在__call__中最后是调用了F.crop(img, i, j, h, w)来完成crop操作，其实前面CenterCrop中虽然是调用 F.center_crop(img, self.size)，但是在F.center_crop()函数中只是先计算了中心点坐标，最后还是调用F.crop(img, i, j, h, w)完成crop操作。
+
 ```python
 class RandomCrop(object):
     """Crop the given PIL Image at a random location.
