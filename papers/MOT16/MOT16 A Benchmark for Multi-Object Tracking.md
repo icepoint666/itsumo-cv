@@ -75,4 +75,6 @@ Bounding box在尽可能紧凑的情况下要包含所标记目标的所有像�
 
 当所有视频被标注完成之后，采用高精度的行人/车辆检测方法来判断标注是否有遗漏、错误，同时人工协助进行审查
 
+https://blog.csdn.net/yuanlulu/article/details/79818599
 
+https://blog.csdn.net/sinat_17196995/article/details/57946708
