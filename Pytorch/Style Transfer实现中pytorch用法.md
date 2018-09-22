@@ -212,5 +212,14 @@ model = torch.load('model.pkl')
 torch.save(model_object.state_dict(), 'params.pkl')
 model_object.load_state_dict(torch.load('params.pkl'))
 ```
+### 6.torch.clamp_函数
+clamp表示夹紧，夹住的意思，torch.clamp(input,min,max,out=None)-> Tensor
+
+将input中的元素限制在[min,max]范围内并返回一个Tensor
+
+用法：
+
+![](../__pics/clamp.png)
+
 ##### pytorch 常用函数积累
 https://blog.csdn.net/sugar_girl/article/details/79695952
