@@ -44,7 +44,44 @@ ASM算法，基于点分布模型，标定67个点的人脸训练图像，对每
  - 2). 使用multi-task loss并设计一种 end-to-end 神经网路， jointly learn bounding box regression and object association
  - 3). Data association使用Minimax Label Propagation算法
  
-##### 6. 
+##### 6. Image Style Transfer Using Convolutional Neural Network. Leon A. Gatys. CVPR 2016.
+`2018.9.18`
+`Style Transfer`
+`Texture Synthesis`
 
+之前的style transfer只能实现比较专一的某种特定对象下的风格迁移，例如手写数组，人脸等，这个方法更加general
 
-**===========把事情做好的标志就是让别人可以轻松明白===========**
+Texture Synthesis Using Convolutional Neural Networks的升华
+
+风格转移，输出的图片C = A(content) + B(style)，就是将图片B的风格转移到图片C中，同时保留图片A的内容。这看起来像是PS就能实现的功能，直接将两个图层叠加融合即可。但其实不然，保留图片A的内容是所有CNN网络都可以实现的，但style是更为抽象的特征。
+
+核心思想：
+ - 1). Gram Matrix提取style features
+ - 2). multi-task losses 同时考虑high level content，与每一层的style
+ - 3). 参数alpha, beta, weight的选取，从而适应general的图像情况
+
+##### 7. Perceptual Losses for Real-Time Style Transfer and Super-Resolution. Jcjohns et al. ECCV 2016.
+`2018.9.22`
+`Style Transfer`
+
+[[project](https://github.com/hzy46/fast-neural-style-tensorflow)]
+
+风格转移的两种方法:
+
+1). 基于图片迭代的描述性神经网络
+
+这一方法会从随机噪声开始，通过反向传播迭代更新（尚未知晓的）风格化图像。图像迭代的目标是最小化总损失，这样风格化后的图像就能同时将内容图像的内容与风格图像的风格匹配起来。
+
+需要指定输入图片与风格图片，然后进行足够多的迭代才能有比较好的效果，每一次运行都是重新训练一个模型，且不可复用。
+
+2). 基于模型迭代的生成式神经网络
+
+这种方法更像是为了解决“基于图片迭代的描述性神经网络”在风格转移中效率过低而存在的，也被成为“快速”神经风格迁移，主要解决了前者的计算速度和计算成本问题。
+
+核心是先训练保存一些用户常用的“风格”参数。用户输入需要转换风格的图片A到网络中，再指定网络调用B风格的参数，输出的图片C其实只是网络最后一层的输出，中间不会涉及过多的参数调整及优化。
+
+与第一种方法对比，基于模型迭代的生成式神经网络更像是一个网络的“test”部分，其只是输出结果，做部分参数的调整，但优劣性不予保证；基于图片迭代的描述性神经网络就是一个网络的“train”部分，其需要进行多次的权重调整及优化，才能使得初始化的噪声图片有比较好的输出。
+
+本文real-time就是因为实现的是第二种方法
+
+**===============把事情做好的标志就是让别人可以轻松明白===============**
