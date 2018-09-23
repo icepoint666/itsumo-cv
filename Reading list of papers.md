@@ -1,5 +1,5 @@
 # Reading list of papers 
-### **2018**
+### **2018**✈
 ##### 1. Active Shape Models --Their Training and Application. T.F.Cootes et al. CVIU 1995.
 `2018.4.25`
 `Face Recognition`
@@ -36,6 +36,15 @@ ASM算法，基于点分布模型，标定67个点的人脸训练图像，对每
 `2018.8.1`
 `MOT`
 `Loss Function`
+
+提出一种quadruplet CNN，通过使用quadruplet losses来associate object detections across frames
+
+创新点：
+ - 1). 通过设计一种新的quadruplet loss来度量frames之间detections是否属于同一个物体
+ - 2). 使用multi-task loss并设计一种 end-to-end 神经网路， jointly learn bounding box regression and object association
+ - 3). Data association使用Minimax Label Propagation算法
+ 
+##### 6. 
 
 
 **===========把事情做好的标志就是让别人可以轻松明白===========**
