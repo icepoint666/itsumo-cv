@@ -22,3 +22,9 @@ https://blog.csdn.net/carson2005/article/details/6601109
 
 https://blog.csdn.net/carson2005/article/details/54620112
 
+##### 5. AI广角镜（AI Literature Panorama）
+
+http://aipano.cse.ust.hk
+
+##### 6. ccf中国计算机协会推荐期刊会议
+
