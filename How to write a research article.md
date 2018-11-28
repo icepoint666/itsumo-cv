@@ -73,6 +73,7 @@ He and Han~\cite{he2016cvpr} … -> He and Han [1] … (如果主作者有两个
 - Step-by-step, easy-to-hard
 - Connections among the experiments
 - Analyzing the reason
+
 **注意**
 - 怎么样选对要做什么样的实验
 - 实验component的排列组合
@@ -102,6 +103,7 @@ He and Han~\cite{he2016cvpr} … -> He and Han [1] … (如果主作者有两个
   - 解释文字上说不清楚的图
 - System overview
 - Results
+
 **一些细节**
 ```Latex
 \includegraphics[width=\linewidth]{***.png/pdf} No JPEG!
