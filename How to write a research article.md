@@ -73,7 +73,7 @@ He and Han~\cite{he2016cvpr} … -> He and Han [1] … (如果主作者有两个
 - Step-by-step, easy-to-hard
 - Connections among the experiments
 - Analyzing the reason
-
+**注意**
 - 怎么样选对要做什么样的实验
 - 实验component的排列组合
 - 循序渐进：最开始跟几个baseline比较
@@ -88,9 +88,52 @@ He and Han~\cite{he2016cvpr} … -> He and Han [1] … (如果主作者有两个
 - Future work
 - More discussions
 
-一篇paper据统计大约300-400句
+**一篇paper据统计大约300-400句**
 
 ## Title
 - 不要是一个句子
 
+## Figure
+- Teaser
+  - tesser是整个一页的第一张图
+  - 作用：show off 我们的technique有多强，选最好的结果就行了
+  - 通常tesser的图片，caption会解释的特别多
+- Functional figure
+  - 解释文字上说不清楚的图
+- System overview
+- Results
+**一些细节**
+```Latex
+\includegraphics[width=\linewidth]{***.png/pdf} No JPEG!
+width=\linewidth 自动缩放成column一样宽
+```
+- Proper content
+- Good layout
+- Caption: What is this figure? & Describing the figure (if needed)
+- Reference:
+```Latex
+  Figure~\ref{figure-label} or Fig~\ref{figure-label}. Just be consistent. 
+  Figure~\ref{figure-label}(a)~&~(b)
+```
+## Table
+- Online latex figure generator 自动生成图表
+- \hline
+- \vline
+- \multicolumn{number of columns}{format, e.g., c/l/r }{content}
 
+## Equation
+- Clearer notation, notation一定要清晰
+- Do not use the same notation for different purposes
+  - One letter for each variable
+- \rm : \mathcal{L}_{\rm Siamese} = …
+
+## Consistency
+- Terms
+  - Pyramidal ……network, Multiscale ……network 
+- Capital
+  - Pyramidal network, pyramidal network
+- Notation
+
+**一些用词的term一定要一致，大小写一定要一致，细节的地方一定要注意**
+
+**写完一篇paper，给老师改完之后，一定要对比老师改之前的version与老师改之后的version，这样才能有所提升。**
