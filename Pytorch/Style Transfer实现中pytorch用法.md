@@ -65,6 +65,10 @@ torch.unsqueeze() 是squeeze
 ### 3.torch.mm()和torch.matmul()
 对矩阵mat1和mat2进行相乘。 如果mat1 是一个n×m张量，mat2 是一个 m×p 张量，将会输出一个 n×p 张量out。
 
+torch.mm()只支持matrix（2维Tensor）想乘。
+
+torch.matmul()batch support, 多维tensor进行矩阵相乘运算。
+
 参数 ：
 
     mat1 (Tensor) – 第一个相乘矩阵
