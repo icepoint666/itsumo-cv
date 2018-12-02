@@ -10,23 +10,27 @@ http://www.visionbib.com/index.php
 
 每段文字有超链接，CV的知识框架和思维导图。对于研究生来说，掌握大方向和关键词就是入门了。不一定有时间去翻完一本书，推理每个公式。通过这个bibliography, 既可以获得一个big picture，又能在你感兴趣的小领域里，借助里面的超链接，从研究的源头一眼扫到当今state-of-the-arts。剩下的就是在这个领域里坚持不懈的grinding，遇到不懂的细节回去找书本，推理一遍。
 
-##### 2. 图像处理与计算机视觉基础，经典以及最近发展
+##### 2. GAN papers总结
+
+https://github.com/zhangqianhui/AdversarialNetsPapers
+
+##### 3. 图像处理与计算机视觉基础，经典以及最近发展
 
 https://www.cnblogs.com/jiahenhe2/p/7912210.html
 
-##### 3. 计算机视觉领域的一些博客，超有实力的研究机构等的网站链接
+##### 4. 计算机视觉领域的一些博客，超有实力的研究机构等的网站链接
 
 https://blog.csdn.net/carson2005/article/details/6601109
 
-##### 4. 机器视觉开源代码集合
+##### 5. 机器视觉开源代码集合
 
 https://blog.csdn.net/carson2005/article/details/54620112
 
-##### 5. AI广角镜（AI Literature Panorama）
+##### 6. AI广角镜（AI Literature Panorama）
 
 http://aipano.cse.ust.hk
 
-##### 6. 图形学，视觉论文阅读资源
+##### 7. 图形学，视觉论文阅读资源
 
 http://kesen.realtimerendering.com/
 
@@ -34,4 +38,4 @@ siga: http://kesen.realtimerendering.com/siga2018Papers.htm
 
 siggraph: https://s2018.siggraph.org/conference/conference-overview/technical-papers/
 
-##### 7. ccf中国计算机协会推荐期刊会议
+##### 8. ccf中国计算机协会推荐期刊会议
