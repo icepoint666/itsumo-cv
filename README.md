@@ -38,4 +38,6 @@ siga: http://kesen.realtimerendering.com/siga2018Papers.htm
 
 siggraph: https://s2018.siggraph.org/conference/conference-overview/technical-papers/
 
-##### 8. ccf中国计算机协会推荐期刊会议
+##### 8. 
+
+https://jackietseng.github.io/conference_call_for_paper/2018-2019-conferences-with-ccf.html
