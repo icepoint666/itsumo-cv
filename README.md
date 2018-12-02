@@ -26,5 +26,12 @@ https://blog.csdn.net/carson2005/article/details/54620112
 
 http://aipano.cse.ust.hk
 
-##### 6. ccf中国计算机协会推荐期刊会议
+##### 6. 图形学，视觉论文阅读资源
 
+http://kesen.realtimerendering.com/
+
+siga: http://kesen.realtimerendering.com/siga2018Papers.htm
+
+siggraph: https://s2018.siggraph.org/conference/conference-overview/technical-papers/
+
+##### 7. ccf中国计算机协会推荐期刊会议
