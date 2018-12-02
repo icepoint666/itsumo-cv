@@ -38,6 +38,7 @@ siga: http://kesen.realtimerendering.com/siga2018Papers.htm
 
 siggraph: https://s2018.siggraph.org/conference/conference-overview/technical-papers/
 
-##### 8. 
+##### 8. 计算机视觉领域顶级会议时间表
+[Jackie Tseng](https://github.com/JackieTseng/conference_call_for_paper)
 
 https://jackietseng.github.io/conference_call_for_paper/2018-2019-conferences-with-ccf.html
