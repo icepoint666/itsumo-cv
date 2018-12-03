@@ -83,6 +83,17 @@ Texture Synthesis Using Convolutional Neural Networks的升华
 与第一种方法对比，基于模型迭代的生成式神经网络更像是一个网络的“test”部分，其只是输出结果，做部分参数的调整，但优劣性不予保证；基于图片迭代的描述性神经网络就是一个网络的“train”部分，其需要进行多次的权重调整及优化，才能使得初始化的噪声图片有比较好的输出。
 
 本文real-time就是因为实现的是第二种方法
+##### 8. Fully Convolutional Networks for Semantic Segmentation. Jonathan at al. CVPR 2015.
+`2018.10.21`
+`Image Segmentation`
+
+FCN实现对图像进行像素级分类
+
+1). FCN可以接受任意尺寸的输入图像
+
+2). FCN采用反卷积层，对最后一个卷积层的featrue map进行上采样(upsampling，这里FCN把fc层也看成conv层），恢复到与输入图像相同的尺寸，从而可以每个图像产生一个预测，同时保证原始图像的空间信息。
+
+这里主要注意一下deconvolution的概念，以及在upsampling时候用到的fuse操作，是一种multi scale的思想。
 
 ##### 9. Why do deep convolutional networks generalize so poorly to small image transformations? Azulay et al. CVPR 2018.
 `2018.10.25`
