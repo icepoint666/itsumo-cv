@@ -124,6 +124,18 @@ HED启发点
 
 里面加了一个trick: 其实问题很像一个像素级分类问题（edge or not-edge)，但是edge的label数目明显远远小于non-label的数目，所以loss加了一个平衡的权值，用来平衡正负样本数目。
 
+##### 11. Curvature scale space image in shape similarity retrieval. S.Abbasi et al. CAIP 1999.
+`2018.9.18`
+`Shape Descriptor`
+
+CSS是一种shape representation, 主要是基于轮廓的形状特征，根据曲率特征来描述形状。
+
+主要思路突破：scale space， scale指的是sigma=1, sigma=2, sigma=4 ... 相当于平滑程度越来越大，所以导致形状越来越接近一个圆圈，导致不存在曲率为0的点。
+
+所以CSS特征也就是要画CSS Image,这个Image的横坐标是u，表示在曲线上的位置，纵坐标是sigma表示scale。
+
+为了让u值更加严谨，还提出了两个改进版本：renormalized, resampled的CSS.
+
 ##### 12. Shape Context: A new descriptor for shape matching and object recognition. Belongie et al. CVPR 2000.
 `2018.9.29`
 `Shape Descriptor`
@@ -141,5 +153,23 @@ HED启发点
 1). shape context的distance是度量TPS transformation之后的T(P)与Q的，那么P经过相应的TPS transformation会猜测应该与Q形状比较相似才对。这一点实际上是shape context为了支持有较大的deformation仍可以匹配shape，做的一些牺牲，牺牲了一些准确率，本质上如果是平移,rotation等简单rigid变换，最小二乘法效果可能会更好。但事实上支持rigid transformation没什么难度，难就难在支持non-rigid，TPS结合log polar的原因就在于它可以匹配到一些non-rigid transformation.
 
 2). shape matching 本身就是这样，你的representation越简单，false positive也就越大，越复杂也就越精确，但是computational power要求越高。shape领域其实就是accuracy与计算量的一个trade-off, 事实上现在CNN representation的表征能力特别强，一般的传统shape descriptor没法比。
+
+##### 13. Histograms of oriented gradients for human detection. N.Dalal et al. CVPR 2005.
+`2018.10.5`
+`Shape Descriptor`
+
+HOG特征：局部归一化的HOG特征描述子
+
+实现：分出来要检测的patch图片，把图片分割成n * m个blocks，求出每个block里面每个像素位置处的gradient magnitude和direction，形成一个直方图包含9个bin，代表9个方向区间,每个block之间还有窗口滑动。
+
+优点：
+
+1). 它提取的边缘与梯度特征可以很好的抓住局部形状的特点
+
+2). 由于在局部的提取，所以对几何和光学变化有很好的不变性
+
+注意：
+HOG论文中的评价指标DET曲线关注一下。
+
 
 **===============把事情做好的标志就是让别人可以轻松明白===============**
