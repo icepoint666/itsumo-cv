@@ -108,8 +108,21 @@ FCN实现对图像进行像素级分类
 
 2). 常用图像数据集(eg: Imagenet),由于数据普遍中心就在图像中心，存在统计偏差，所以CNN泛化能力其实还不够好，CNN成功的关键在于归纳偏差的方法。
 
+##### 10. Holistically-Nested Edge Detection. Xie et al. IJCV 2015.
+`2018.11.05`
+`Edge Detection`
 
+HED启发点
 
+1). 由FCN启发，整体(holistical)信息，image-to-image.
+
+2). multi-scale feature learning 的思想， loss由 fusion loss 和 side loss 组成:
+ - fusion loss: 紧扣holistically，很像style transfer中的style也是每层取比例，学习到的是transparent features，一种整体特征。这里有weighted-fusion，与style transfer不同的是这里不再是超参，用来学习fusion loss中每层的weight，从而更好地学习到edge特征。
+ - side loss: 对每层的feature map作反卷积，这里叫做side-output layer，类似于FCN的反卷积层，会产生multi-scale的dense predictions (map)然后与label相比对得出loss.
+
+整体做法就是原始图片为输入，边缘标注的图片作为监督label。
+
+里面加了一个trick: 其实问题很像一个像素级分类问题（edge or not-edge)，但是edge的label数目明显远远小于non-label的数目，所以loss加了一个平衡的权值，用来平衡正负样本数目。
 
 
 **===============把事情做好的标志就是让别人可以轻松明白===============**
