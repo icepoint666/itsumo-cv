@@ -44,7 +44,7 @@ ASM算法，基于点分布模型，标定67个点的人脸训练图像，对每
  - 2). 使用multi-task loss并设计一种 end-to-end 神经网路， jointly learn bounding box regression and object association
  - 3). Data association使用Minimax Label Propagation算法
  
-##### 6. Image Style Transfer Using Convolutional Neural Network. Leon A. Gatys. CVPR 2016.
+##### 6. Image Style Transfer Using Convolutional Neural Network. Gatys at al. CVPR 2016.
 `2018.9.18`
 `Style Transfer`
 `Texture Synthesis`
@@ -83,5 +83,22 @@ Texture Synthesis Using Convolutional Neural Networks的升华
 与第一种方法对比，基于模型迭代的生成式神经网络更像是一个网络的“test”部分，其只是输出结果，做部分参数的调整，但优劣性不予保证；基于图片迭代的描述性神经网络就是一个网络的“train”部分，其需要进行多次的权重调整及优化，才能使得初始化的噪声图片有比较好的输出。
 
 本文real-time就是因为实现的是第二种方法
+
+##### 9. Why do deep convolutional networks generalize so poorly to small image transformations? Azulay et al. CVPR 2018.
+`2018.10.25`
+`CNN`
+
+通常认为CNN对图像平移具有不变性，但发现当图像在当前平面上平移几个像素后，现代CNN(VGG16, Resnet50, InceptionResnetv2)输出会发生巨大变化。
+对模型输入图像做了微小的平移，放大，形变后，会导致模型评分出现“滑铁卢”。
+
+产生这个现象的主因：
+
+1). 现代CNN体系结构没有遵循经典采样定理，根据nyquist theorem，从信号学角度分析，CNN小规模平移无法保证平移不变性，主要是subsampling在平移不变性上的失败。(笔记里实验证明，待进一步理解）
+
+2). 常用图像数据集(eg: Imagenet),由于数据普遍中心就在图像中心，存在统计偏差，所以CNN泛化能力其实还不够好，CNN成功的关键在于归纳偏差的方法。
+
+
+
+
 
 **===============把事情做好的标志就是让别人可以轻松明白===============**
