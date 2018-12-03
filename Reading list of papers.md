@@ -124,5 +124,22 @@ HED启发点
 
 里面加了一个trick: 其实问题很像一个像素级分类问题（edge or not-edge)，但是edge的label数目明显远远小于non-label的数目，所以loss加了一个平衡的权值，用来平衡正负样本数目。
 
+##### 12. Shape Context: A new descriptor for shape matching and object recognition. Belongie et al. CVPR 2000.
+`2018.9.29`
+`Shape Descriptor`
+
+优势：shape context描述先天性比基于边界轮廓描述的形状匹配度高
+
+方法：
+
+1). 最精随的地方在于log polar histogram生成n * m 个bins.
+
+2). 通过TPS进行对约束点进行变换，并对两个形状点进行匈牙利算法匹配，并计算cost。
+
+注意：
+
+1). shape context的distance是度量TPS transformation之后的T(P)与Q的，那么P经过相应的TPS transformation会猜测应该与Q形状比较相似才对。这一点实际上是shape context为了支持有较大的deformation仍可以匹配shape，做的一些牺牲，牺牲了一些准确率，本质上如果是平移,rotation等简单rigid变换，最小二乘法效果可能会更好。但事实上支持rigid transformation没什么难度，难就难在支持non-rigid，TPS结合log polar的原因就在于它可以匹配到一些non-rigid transformation.
+
+2). shape matching 本身就是这样，你的representation越简单，false positive也就越大，越复杂也就越精确，但是computational power要求越高。shape领域其实就是accuracy与计算量的一个trade-off, 事实上现在CNN representation的表征能力特别强，一般的传统shape descriptor没法比。
 
 **===============把事情做好的标志就是让别人可以轻松明白===============**
