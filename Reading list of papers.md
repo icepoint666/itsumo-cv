@@ -171,7 +171,7 @@ HOG特征：局部归一化的HOG特征描述子
 注意：
 HOG论文中的评价指标DET曲线关注一下。
 
-##### 14. Pyramid of Arclength Descriptor for generating collage of shapes. Siggraph Asia 2016.
+##### 14. Pyramid of Arclength Descriptor for generating collage of shapes. Han et al. Siggraph Asia 2016.
 `Shape Descriptor`
 `2018.10.7`
 
