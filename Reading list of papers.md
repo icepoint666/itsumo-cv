@@ -171,5 +171,17 @@ HOG特征：局部归一化的HOG特征描述子
 注意：
 HOG论文中的评价指标DET曲线关注一下。
 
+##### 14. Pyramid of Arclength Descriptor for generating collage of shapes. Siggraph Asia 2016.
+`Shape Descriptor`
+`2018.10.7`
+
+2D shape descriptor,主要用于partial-shape matching，具有很好的shape invarience
+
+PAD专门处理collage(拼贴问题)，能够达到很好的效果，而且计算cost非常低，是一种bottom-up方法。
+
+实现：根据单位曲率变化（curvature）对应的弧长（arclenth）并加以正则化（normalization）得到的特征值，计算multi-scale的特征值，形成的特征向量即为这个局部形状特征。
+
+特点：最大的特点scale-invarience； 还有其他特点：计算复杂度低； 缺点：依赖于curvature.
+
 
 **===============把事情做好的标志就是让别人可以轻松明白===============**
