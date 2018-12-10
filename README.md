@@ -42,3 +42,8 @@ siggraph: https://s2018.siggraph.org/conference/conference-overview/technical-pa
 [Jackie Tseng](https://github.com/JackieTseng/conference_call_for_paper)
 
 https://jackietseng.github.io/conference_call_for_paper/2018-2019-conferences-with-ccf.html
+
+##### 9. AI SOTA(State of The Art)论文
+
+https://www.stateoftheart.ai/
+
