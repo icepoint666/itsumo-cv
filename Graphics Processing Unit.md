@@ -1,4 +1,7 @@
 # Graphics Processing Unit
+> GPU是显卡的核心,显卡，则是由GPU、显存、电路板，还有BIOS固件组成的，所以GPU不等于显卡。
+
+> GPU只是显卡上的一个核心处理芯片，是显卡的心脏，不能单独作为外接扩展卡使用，GPU因并行计算任务较重，所以功耗较大，只能焊接在显卡的电路板上使用。
 
 ## 1. 显卡型号参数大全
 N卡：wikipedia:[List of Nvidia graphics processing units](https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units)
@@ -167,6 +170,8 @@ DDR5显存带宽=显存频率×显存位宽/8
 
 **5. Streaming Processor（SP）：** 流处理器：
 
+流处理器就是核心。
+
 每个流处理器当中都有专门高速单元负责解码和执行流数据。
 
 流处理器多少对显卡性能有决定性作用，可以说高中低端的显卡除了核心不同外最主要的差别就在于**流处理器数量**。
@@ -177,11 +182,24 @@ CUDA核心，理论上流处理器缩写是SP。但NVIDIA自己称呼他们的SP
 
 CUDA Core只是N卡流处理器而已,只是一个流处理器名词。
 
+你可以理解为CUDA是一个基于NVIDIA GPU平台上面NV自己定制的特殊计算体系。是NV自己发明的运算算法，在NV平台和软件支持上面才能发挥最高效率。CUDA在NVIDIA定义是一种类C语言，本身兼容C语言。CUDA虽然是一种独立语言提供开发学习，但CUDA本身和C差距不算非常巨大，很多有经验的开发者很快能学会。
+
 **7. Streaming Multiprocessor（SM）：** 流多处理器：
 
 里面有8个SP，外加2个SFU（Special Function Units）、16K的shared memory等等。无论是G80、G92还是GT200的SM都是包含8个SP，区别在于TPC（Texture/Processor Cluster）中有用几个SM。
 
 GT200有240个SP，它总共有30个SM。
+
+**8. core frequency (Base core clock) ：** 核心频率（显卡频率）：
+
+显卡的核心部分是GPU，核心频率就是GPU的工作频率。
+
+Base core clock实际上是每个核心的工作频率，因此还要加上核心数，才可以算作总频率。
+
+GPU Boost从物理层面，可以这样去理解：当显卡在运行某个3D应用时，因为实际3D运算并未用到所有的晶体管，那么，显卡的实际运行功耗也就与设计TDP存在一定距离，GPU Boost就可以通过提升运行频率，在不超过预先设定的TDP的情况下，用尽剩下的TDP，追求更好的显卡性能。
+
+GPU Boost的存在，使GPU频率首次细分出了多个名称：Base Clock和Boost Clock。前者是GPU核心的基本频率，是NVIDIA保证显卡在3D运算时的频率，与过去的默认频率意义是一样的，Boost Clock则代表经过GPU Boost动态超频后的频率，因为频率会不断地实时调整，Boost Clock没有绝对值(Absolute Value)。
+
 
 ## Reference
 1. https://blog.csdn.net/u013165704/article/details/80569424
