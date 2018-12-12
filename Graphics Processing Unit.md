@@ -1,4 +1,5 @@
 # Graphics Processing Unit
+[![Build Status](https://github.com/icepoint666/itsumo-cv)](https://github.com/icepoint666/itsumo-cv)
 ## 1. 显卡型号参数大全
 N卡：wikipedia:[List of Nvidia graphics processing units](https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units)
 
