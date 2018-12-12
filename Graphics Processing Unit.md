@@ -194,8 +194,6 @@ GT200有240个SP，它总共有30个SM。
 
 显卡的核心部分是GPU，核心频率就是GPU的工作频率。
 
-Base core clock实际上是每个核心的工作频率，因此还要加上核心数，才可以算作总频率。
-
 GPU Boost从物理层面，可以这样去理解：当显卡在运行某个3D应用时，因为实际3D运算并未用到所有的晶体管，那么，显卡的实际运行功耗也就与设计TDP存在一定距离，GPU Boost就可以通过提升运行频率，在不超过预先设定的TDP的情况下，用尽剩下的TDP，追求更好的显卡性能。
 
 GPU Boost的存在，使GPU频率首次细分出了多个名称：Base Clock和Boost Clock。前者是GPU核心的基本频率，是NVIDIA保证显卡在3D运算时的频率，与过去的默认频率意义是一样的，Boost Clock则代表经过GPU Boost动态超频后的频率，因为频率会不断地实时调整，Boost Clock没有绝对值(Absolute Value)。
