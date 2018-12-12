@@ -54,6 +54,38 @@ CPU要做得很通用。CPU需要同时很好的支持并行和串行操作，�
 
 独显一般是玩游戏 制图 做视频 采集等应用， 集成显卡一般就是办公 上网 高清电影等应用。 一般独显的较贵。
 
+## 4. 显卡供应商
+**GPU三大厂商**
+
+**英特尔**
+英特尔的GPU基本为**集成显卡**芯片，用于英特尔的主板和英特尔的CPU。可能你想不到，要是只按市场占有率计算，英特尔随着他主板及CPU发售的集成GPU占据了整个GPU市场的60%以上。
+
+他的GPU主要有：唯一一款独立显卡芯片Intel 740（i740）。Extreme Graphics系列、GMA系列（集成于芯片组中）。现在的HD Graphics系列、Iris™ Graphics系列、Iris™ Pro Graphics系列等（集成于CPU中）。
+
+**NVIDIA**
+NVIDIA是现在最大的**独立显卡**芯片生产销售商。
+
+他的GPU包括大家熟悉的Geforce系列 ，包括GTX、GTS、GT等。
+
+专业工作站的Quadro系列，超级计算的Tesla系列，多显示器商用的NVS系列，移动设备的Tegra系列 。
+
+以前也销售集成在主板上的集成显卡芯片，这些随着主板芯片组一起发售，但是由于AMD收购ATI后自身主板芯片组GPU能力提高，NVIDIA芯片组如日中天的景象已经消失了。
+
+**AMD(ATI)**
+AMD是世界上第二大的独立显卡芯片生产销售商，他的前身就是ATI，2006年AMD以54亿美元收购ATI。
+
+他的GPU主要是大家熟悉的Radeon系列，包括以前的X、HD系列，近几年的R9、R7、R5、R3，现在的RX系列等。
+
+专业工作站的FireGL系列，超级计算的FireStream系列，多显示器商用的FireMV系列，现在前三者已合并为FirePro系列。
+
+早期ATI还生产过Wonder系列、Mach系列、Rage系列芯片。
+
+除了独立显卡之外AMD还拥有集成显卡芯片，集成于芯片组、APU中。
+
+由于AMD收购ATI后，其主板市场迅速扩大，已经夺取了NVIDIA在AMD处理器主板芯片组的半壁江山。
+
+就现在的发售量和发售盈利方面，AMD的GPU市场占有率方面仍然略输于NVIDIA。
+
 ## Reference
 1. https://blog.csdn.net/u013165704/article/details/80569424
 2. https://www.zhihu.com/question/24272857/answer/172843227
