@@ -141,6 +141,15 @@ AMD是世界上第二大的独立显卡芯片生产销售商，他的前身就�
 
 **不同型号的核心，参数也不同**，比如GT240，官方默认是96个流处理器、40NM工艺、550MHZ核心频率、1340MHZ流处理器频率、3400MHZ显存频率、128显存位宽。而实现产品中，按上面这些官方参数生产的显卡，我们就称之为公版显卡，而达不到这些官方参数的显卡，我们就称之为缩水版显卡，而超出官方参数的显卡，我们就称之为超公版显卡。
 
+### 参数介绍
+**GFLOPS:**
+FLOPS是Floating-point Operations Per Second每秒所执行的浮点运算次数的英文缩写。它是一个衡量计算机计算能力的量，这个量经常使用在那些需要大量浮点运算的科学运算中。有时也会被记为flop/s。
+
+GFLOPS 就是 Giga Floating-point Operations Per Second,即每秒10亿次的浮点运算数,常作为GPU性能参数但不一定代表GPU的实际表现，因为还要考虑具体如何拆分多边形和像素、以及纹理填充，理论上该数值越高越好。1GFlops = 1,000MFlops。
+**Memory:**
+
+**Bus type:**
+
 ## Reference
 1. https://blog.csdn.net/u013165704/article/details/80569424
 2. https://www.zhihu.com/question/24272857/answer/172843227
