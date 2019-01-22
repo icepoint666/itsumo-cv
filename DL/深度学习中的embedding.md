@@ -8,6 +8,7 @@ Embedding在数学上表示一个mapping: f:X->Y 也就是一个function
 embedding整体上可以理解为，从一个空间映射到另外一个空间，保留基本属性。
 
 ## 深度学习上
+Embedding在深度学习上表示编码encoding（动名词/名词）
 ### One-hot Embedding
 假设一共有m个物体，每个物体都有自己的唯一id，那么从物体的集合到Rm(m维向量空间)有一个trivial(平凡解)的嵌入。
 就是把它映射到Rm中的标准基，这种嵌入叫做One-hot embedding
