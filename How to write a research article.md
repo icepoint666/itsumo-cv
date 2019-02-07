@@ -1,7 +1,7 @@
 # How to write a research article
 ## Tools
 - Latex
-  Latex入门指南：https://www.cnblogs.com/linxd/p/4955530.html
+  （入门指南：https://www.cnblogs.com/linxd/p/4955530.html）
   - Windows: TexStudio + Miktex
   - Mac: sublime text 3
 - grammerly.com
