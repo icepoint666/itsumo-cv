@@ -14,7 +14,7 @@ AI所有领域最优论文：https://paperswithcode.com/sota
 - 论文与代码之间的链接：https://paperswithcode.com/media/about/links-between-papers-and-code.json.gz
 - 评估排行榜：https://paperswithcode.com/media/about/evaluation-tables.json.gz
 
-##### 2. pytorch相关上层库
+##### 2. Pytorch相关上层库
 
 ##### **TorchGAN** :
 TorchGAN 是基于 PyTorch 的 GAN 设计开发框架。该框架旨在为流行的 GAN 提供构造模块，且允许为前沿研究进行定制化。
