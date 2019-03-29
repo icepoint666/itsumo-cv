@@ -16,6 +16,7 @@ AI所有领域最优论文：https://paperswithcode.com/sota
 ##### 2. ArXiv检索工具
 Arxiv Sanity Preserver: www.arxiv-sanity.com
 
+ArXiv CV板块https://arxiv.org/list/cs.CV/recent
 ##### 3. Pytorch相关上层库
 
 ##### **TorchGAN** :
