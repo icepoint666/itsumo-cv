@@ -111,6 +111,8 @@ https://mp.weixin.qq.com/s/s1eod_jiihHyTHPbktcIVA
 
 https://www.nowcoder.com/discuss/186113
 
+28. 算法面经 | 华为/微软/阿里/百度/字节跳动/OPPO
 
+https://www.nowcoder.com/discuss/181117
 
 
