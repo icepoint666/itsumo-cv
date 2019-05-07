@@ -107,6 +107,9 @@ https://mp.weixin.qq.com/s/veFsGOz1sK1JfJYJFUI0cQ
 
 https://mp.weixin.qq.com/s/s1eod_jiihHyTHPbktcIVA
 
+27. 春招计算机视觉算法面经（腾讯/阿里/头条/网易/旷视/海康/虹软等）
+
+https://www.nowcoder.com/discuss/186113
 
 
 
