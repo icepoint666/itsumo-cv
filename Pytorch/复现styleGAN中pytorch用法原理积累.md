@@ -1,4 +1,4 @@
-# pytorch复现styleGAN的深层次理解
+# 复现styleGAN中pytorch用法积累
 
 ### 1. retain graph
 反向传播的时候有时候设置retain_graph=True的作用是：
@@ -85,3 +85,98 @@ dlatent_avg = torch.zeros([len(gpus), dlatent_size]).to(_device) # 这里你还�
 
 **问题6 解决** 目前还没有寻找到解决办法
 
+### 3. pytorch的dataloader本身就是一个python迭代器，所以不能无限循环
+python迭代器的next操作，只能把这个循环迭代完就停止了，stopiteration
+
+如果想让dataloader对数据无限迭代,在每次fetch数据的时候，代码改成这样
+```python
+# fetch forever
+try:
+    reals = next(data_iters[sched.resolution])
+except:
+    data_iters[sched.resolution] = iter((data_loaders[sched.resolution].train_loader))
+    reals = next(data_iters[sched.resolution])
+```
+
+### 4. pytorch conv2d与transposeConv2d的一些本质
+
+看源代码本质都是先定义一些torch.nn.Parameter类型的weight或者bias，然后通过F.conv2d以及F.transposeconv2d的操作
+
+但是定义weight的时候只有transposeConv2d比较特别，weight维度是先input_channel,然后output_channel，然后kernel_size， kernel_size
+
+对于conv2d以及其他Linear的weight定义都是先定义output_channel再定义input_channel
+
+### 5. pytorch hub
+
+PyTorch Hub是一个简易API和工作流程，为复现研究提供了基本构建模块，包含预训练模型库。
+
+并且，PyTorch Hub还支持Colab，能与论文代码结合网站Papers With Code集成，用于更广泛的研究。
+
+一行代码就导入
+
+PyTorch Hub的使用简单到不能再简单，不需要下载模型，只用了一个torch.hub.load()就完成了对图像分类模型AlexNet的调用。
+```python
+import torch
+model = torch.hub.load('pytorch/vision', 'alexnet', pretrained=True)
+model.eval()
+```
+PyTorch Hub允许用户对已发布的模型执行以下操作：
+```
+    1、查询可用的模型;
+    2、加载模型;
+    3、查询模型中可用的方法。
+```
+下面让我们来看看每个应用的实例。
+1、查询可用的模型
+
+用户可以使用torch.hub.list()这个API列出repo中所有可用的入口点。比如你想知道PyTorch Hub中有哪些可用的计算机视觉模型：
+```
+>>> torch.hub.list('pytorch/vision')
+>>>
+['alexnet',
+'deeplabv3_resnet101',
+'densenet121',
+...
+'vgg16',
+'vgg16_bn',
+'vgg19',
+ 'vgg19_bn']
+```
+2、加载模型
+
+在上一步中能看到所有可用的计算机视觉模型，如果想调用其中的一个，也不必安装，只需一句话就能加载模型。
+```
+model = torch.hub.load('pytorch/vision', 'deeplabv3_resnet101', pretrained=True)
+```
+至于如何获得此模型的详细帮助信息，可以使用下面的API：
+```
+print(torch.hub.help('pytorch/vision', 'deeplabv3_resnet101'))
+```
+如果模型的发布者后续加入错误修复和性能改进，用户也可以非常简单地获取更新，确保自己用到的是最新版本：
+```
+model = torch.hub.load(..., force_reload=True)
+```
+对于另外一部分用户来说，稳定性更加重要，他们有时候需要调用特定分支的代码。例如pytorch_GAN_zoo的hub分支：
+```
+model = torch.hub.load('facebookresearch/pytorch_GAN_zoo:hub', 'DCGAN', pretrained=True, useGPU=False)
+```
+3、查看模型可用方法
+
+
+从PyTorch Hub加载模型后，你可以用dir(model)查看模型的所有可用方法。以bertForMaskedLM模型为例：
+```
+>>> dir(model)
+>>>
+['forward'
+...
+'to'
+'state_dict',
+]
+```
+如果你对forward方法感兴趣，使用help(model.forward) 了解运行运行该方法所需的参数。
+```
+>>> help(model.forward)
+>>>
+Help on method forward in module pytorch_pretrained_bert.modeling:
+forward(input_ids, token_type_ids=None, attention_mask=None, masked_lm_labels=None)
+```
