@@ -1,8 +1,75 @@
 # pytorch冻结想冻结的预训练模型中的某一层
 
-原链接：https://www.zhihu.com/question/311095447/answer/589307812
+原链接：
 
-先列出4种可行参考方法，最后列出一种方法的代码实现。
+https://www.zhihu.com/question/311095447/answer/589307812
+
+https://zhuanlan.zhihu.com/p/76459295
+
+**优先方法**
+
+在加载预训练模型的时候，我们有时想冻结前面几层，使其参数在训练过程中不发生变化。
+
+我们需要先知道每一层的名字，通过如下代码打印：
+```python
+net = Network()  # 获取自定义网络结构
+for name, value in net.named_parameters():
+    print('name: {0},\t grad: {1}'.format(name, value.requires_grad))
+```
+
+假设前几层信息如下：
+```
+name: cnn.VGG_16.convolution1_1.weight,	 grad: True
+name: cnn.VGG_16.convolution1_1.bias,	 grad: True
+name: cnn.VGG_16.convolution1_2.weight,	 grad: True
+name: cnn.VGG_16.convolution1_2.bias,	 grad: True
+name: cnn.VGG_16.convolution2_1.weight,	 grad: True
+name: cnn.VGG_16.convolution2_1.bias,	 grad: True
+name: cnn.VGG_16.convolution2_2.weight,	 grad: True
+name: cnn.VGG_16.convolution2_2.bias,	 grad: True
+```
+
+后面的True表示该层的参数可训练，然后我们定义一个要冻结的层的列表：
+```
+no_grad = [
+    'cnn.VGG_16.convolution1_1.weight',
+    'cnn.VGG_16.convolution1_1.bias',
+    'cnn.VGG_16.convolution1_2.weight',
+    'cnn.VGG_16.convolution1_2.bias'
+]
+```
+
+冻结方法如下：
+```python
+net = Net.CTPN()  # 获取网络结构
+for name, value in net.named_parameters():
+    if name in no_grad:
+        value.requires_grad = False
+    else:
+        value.requires_grad = True
+```
+
+冻结后我们再打印每层的信息：
+```
+name: cnn.VGG_16.convolution1_1.weight,	 grad: False
+name: cnn.VGG_16.convolution1_1.bias,	 grad: False
+name: cnn.VGG_16.convolution1_2.weight,	 grad: False
+name: cnn.VGG_16.convolution1_2.bias,	 grad: False
+name: cnn.VGG_16.convolution2_1.weight,	 grad: True
+name: cnn.VGG_16.convolution2_1.bias,	 grad: True
+name: cnn.VGG_16.convolution2_2.weight,	 grad: True
+name: cnn.VGG_16.convolution2_2.bias,	 grad: True
+```
+
+可以看到前两层的weight和bias的requires_grad都为False，表示它们不可训练。
+
+
+最后在定义优化器时，只对requires_grad为True的层的参数进行更新。
+```python
+optimizer = optim.Adam(filter(lambda p: p.requires_grad, net.parameters()), lr=0.01)
+```
+
+**下面有4种可行参考方法，最后一种方法的完整代码实现**
 
 首先假设如下的模型：
 ```python
