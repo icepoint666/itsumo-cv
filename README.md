@@ -28,7 +28,7 @@ TorchGAN 是基于 PyTorch 的 GAN 设计开发框架。该框架旨在为流行
 
 文档地址：https://torchgan.readthedocs.io/en/latest/
 
-通过pip就可以安装orchGAN
+通过pip就可以安装torchGAN
 
 ##### 4. 计算机视觉索引
 
