@@ -1,4 +1,4 @@
-# 在新定义的网络里记载预训练模型的一部分参数
+# pytorch在新定义的网络里记载预训练模型的一部分参数
 
 **对于pytorch的保存的模型`netG.pth`，其实就是`OrderedDict()`**
 
@@ -57,6 +57,14 @@ new_network.load_state_dict(pretrained_net, strict=False)
 当然在定义的类中，拿到Sequential的某一层用[], 比如`self.seqConvs[0].weight`.
 
 strict=False是没有那么智能，遵循有相同的key则赋值，否则直接丢弃。
+
+验证新导入的参数与预训练模型的参数是否一致
+```python
+pretrained_net = torch.load("netG.pth")
+new_network.load_state_dict(pretrained_net, strict=False)
+print(new_network.state_dict())
+print(pretrained_net)
+```
 
 **这里有一个模型某层的权重赋值示例**
 ```python
