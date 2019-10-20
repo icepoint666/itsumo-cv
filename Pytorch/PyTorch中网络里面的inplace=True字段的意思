@@ -1,0 +1,9 @@
+# PyTorch中网络里面的inplace=True字段的意思
+
+在例如`nn.LeakyReLU(inplace=True)`中的inplace字段是什么意思呢？有什么用？
+
+inplace=True的意思是进行原地操作，例如`x=x+5`，对`x`就是一个原地操作，`y=x+5`,`x=y`，完成了与`x=x+5`同样的功能但是不是原地操作，上面`LeakyReLU`中的`inplace=True`的含义是一样的，是对于`Conv2d`这样的上层网络传递下来的tensor直接进行修改，好处就是可以节省运算内存，不用多储存变量`y`。
+```
+    inplace=True means that it will modify the input directly, without allocating any additional output. It can sometimes slightly decrease the memory usage, but may not always be a valid operation (because the original input is destroyed). However, if you don’t see an error, it means that your use case is valid.
+```
+https://www.jianshu.com/p/8385aa74e2de
